@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Operations</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{'/' + ${user.id} + '/edit'}" class="button">Update</a>
+            <form th:action="@{'/' + ${user.id}}" method="post" style="display: inline;">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="button">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<br/>
+<hr/>
+
+<a href="/new" class="button">Create</a>
+<a href="/logout" class="button">Exit</a>
+
+<br/>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+    </tr>
+</table>
+
+<br/>
+<hr/>
+
+<a href="/logout" class="button">Exit</a>
+
+<br/>
+
+</body>
+</html>
